@@ -1,0 +1,31 @@
+{
+  "workers": {
+    "engine": "workers/engine.mjs"
+  },
+  "patches": [
+    {
+      "path": "node_modules/replicad-opencascadejs/dist/replicad_single.js",
+      "sha256": "018e57538fcb773f0124eae60aee4de693d3aae01c55b2b883a874911ab121c3",
+      "find": "async function Module(moduleArg={}){var moduleRtn;var g=moduleArg,aa=!!globalThis.window,ba=!!globalThis.WorkerGlobalScope,ca=globalThis.process?.versions?.node&&\"renderer\"!=globalThis.process?.type;if(ca){const {createRequire:a}=await import(\"node:module\");var require=a(import.meta.url)}var da=\"./this.program\",ea=(a,b)=>{throw b;},ha=import.meta.url,ia=\"\",ja,ka;\nif(ca){var fs=require(\"node:fs\");ha.startsWith(\"file:\")&&(ia=require(\"node:path\").dirname(require(\"node:url\").fileURLToPath(ha))+\"/\");ka=a=>{a=la(a)?new URL(a):a;return fs.readFileSync(a)};ja=async a=>{a=la(a)?new URL(a):a;return fs.readFileSync(a,void 0)};1<process.argv.length&&(da=process.argv[1].replace(/\\\\/g,\"/\"));process.argv.slice(2);ea=(a,b)=>{process.exitCode=a;throw b;}}else if(aa||ba)",
+      "replace": "async function Module(moduleArg={}){var moduleRtn;var g=moduleArg,aa=!!globalThis.window,ba=!!globalThis.WorkerGlobalScope,ca=false;var da=\"./this.program\",ea=(a,b)=>{throw b;},ha=import.meta.url,ia=\"\",ja,ka;if(aa||ba)"
+    },
+    {
+      "path": "node_modules/replicad-opencascadejs/dist/replicad_single.js",
+      "sha256": "018e57538fcb773f0124eae60aee4de693d3aae01c55b2b883a874911ab121c3",
+      "find": "function Ac(a,b,c,d,e,f){var h=b.length;if(2>h)throw new V(\"argTypes array size mismatch! Must at least get return value and 'this' types!\");var k=null!==b[1]&&null!==c,m=zc(b);c=!b[0].uc;var l=b[0],n=b[1];d=[a,Pb,d,e,Kb,l.cb.bind(l),n?.kb.bind(n)];for(e=2;e<h;++e)l=b[e],d.push(l.kb.bind(l));if(!m)for(e=k?1:2;e<b.length;++e)null!==b[e].mb&&d.push(b[e].mb);m=zc(b);e=b.length-2;n=[];l=[\"fn\"];k&&l.push(\"thisWired\");for(h=0;h<e;++h)n.push(`arg${h}`),l.push(`arg${h}Wired`);n=n.join(\",\");l=l.join(\",\");\nn=`return function (${n}) {\\n`;m&&(n+=\"var destructors = [];\\n\");var r=m?\"destructors\":\"null\",q=\"humanName throwBindingError invoker fn runDestructors fromRetWire toClassParamWire\".split(\" \");k&&(n+=`var thisWired = toClassParamWire(${r}, this);\\n`);for(h=0;h<e;++h){var t=`toArg${h}Wire`;n+=`var arg${h}Wired = ${t}(${r}, arg${h});\\n`;q.push(t)}n+=(c||f?\"var rv = \":\"\")+`invoker(${l});\\n`;if(m)n+=\"runDestructors(destructors);\\n\";else for(h=k?1:2;h<b.length;++h)f=1===h?\"thisWired\":\"arg\"+(h-2)+\"Wired\",\nnull!==b[h].mb&&(n+=`${f}_dtor(${f});\\n`,q.push(`${f}_dtor`));c&&(n+=\"var ret = fromRetWire(rv);\\nreturn ret;\\n\");b=(new Function(q,n+\"}\\n\"))(...d);return Yb(a,b)}",
+      "replace": "function Ac(name,types,klass,invoker,fn,isAsync){if(types.length<2)throw new V(\"argTypes array size mismatch!\");const hasThis=types[1]!==null&&klass!==null,ret=types[0],hasReturn=!ret.uc,needsDestructors=zc(types);return Yb(name,function(...args){const destructors=needsDestructors?[]:null,wired=[],values=[fn];if(hasThis){const v=types[1].kb(destructors,this);wired.push([types[1],v]);values.push(v);}for(let i=2;i<types.length;i++){const v=types[i].kb(destructors,args[i-2]);wired.push([types[i],v]);values.push(v);}const rv=invoker(...values);if(needsDestructors)Kb(destructors);else for(const [type,value] of wired)if(type.mb!==null)type.mb(value);if(hasReturn)return ret.cb(rv);});}"
+    },
+    {
+      "path": "node_modules/replicad-opencascadejs/dist/replicad_single.js",
+      "sha256": "018e57538fcb773f0124eae60aee4de693d3aae01c55b2b883a874911ab121c3",
+      "find": "m:function(a,b,c){var [d,...e]=bd(a,b>>>0);b=d.kb.bind(d);var f=e.map(m=>m.qb.bind(m));a--;var h={toValue:Z};a=f.map((m,l)=>{var n=`argFromPtr${l}`;h[n]=m;return`${n}(args${l?\"+\"+8*l:\"\"})`});switch(c){case 0:var k=\"toValue(handle)\";break;case 2:k=\"new (toValue(handle))\";break;case 3:k=\"\";break;case 1:h.getStringOrSymbol=ed,k=\"toValue(handle)[getStringOrSymbol(methodName)]\"}k+=`(${a})`;d.uc||(h.toReturnWire=b,h.emval_returnValue=\ncd,k=`return emval_returnValue(toReturnWire, destructorsRef, ${k})`);k=`return function (handle, methodName, destructorsRef, args) {\\n${k}\\n}`;c=(new Function(Object.keys(h),k))(...Object.values(h));k=`methodCaller<(${e.map(m=>m.name)}) => ${d.name}>`;return ad(Yb(k,c))}",
+      "replace": "m:function(a,b,c){var [d,...e]=bd(a,b>>>0);const kind=c,caller=function(handle,methodName,destructorsRef,args){const values=e.map((type,i)=>type.qb(args+8*i));let result;if(kind===0)result=Z(handle)(...values);else if(kind===2)result=new (Z(handle))(...values);else if(kind===1){const target=Z(handle);result=target[ed(methodName)](...values);}else result=values.length?values[values.length-1]:undefined;if(!d.uc)return cd(d.kb.bind(d),destructorsRef,result);};return ad(Yb(`methodCaller<(${e.map(m=>m.name)}) => ${d.name}>`,caller));}"
+    },
+    {
+      "path": "node_modules/replicad-opencascadejs/dist/replicad_single.js",
+      "sha256": "018e57538fcb773f0124eae60aee4de693d3aae01c55b2b883a874911ab121c3",
+      "find": "Oa=()=>{if(ca){var a=require(\"node:crypto\");return b=>a.randomFillSync(b)}return b=>crypto.getRandomValues(b)}",
+      "replace": "Oa=()=>b=>crypto.getRandomValues(b)"
+    }
+  ]
+}
