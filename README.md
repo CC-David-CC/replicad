@@ -9,3 +9,5 @@ The app uses the shared account file service; temporary guest Linux files are se
 Source entry: `index.mjs`; viewer: `preview.mjs`; worker: `workers/engine.mjs`; dependencies and build settings: `package.json`. Build with the shared public app builder, which bundles dependencies privately. See `docs/APP_UNIFICATION_PROGRESS.md` for current validation and remaining work.
 
 Local desktop, emulated-phone and 4K and live emulated-phone account tests verify offset hole vertices in exported box and cylinder STL files, boundary rejection, preview, project sync and fresh-session reopening. STL is a triangulated approximation; independently check any model before fabrication.
+
+A persistent notice reports when My files synchronization detects that the saved project changed, became unavailable, or has conflicting copies. Your current parameters remain open; save a copy or resolve conflicts in Files. Project and model writes also identify immediate conflicts.
