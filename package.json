@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "replicad": "1.2.0",
-    "replicad-opencascadejs": "1.1.0"
+    "replicad-opencascadejs": "1.1.0",
+    "three": "0.182.0"
   }
 }
