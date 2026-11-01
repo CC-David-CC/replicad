@@ -51,3 +51,10 @@ If a restored project is temporarily unavailable or conflicted, **Retry saved pr
 The in-app **Try a first model** guide uses a 40 × 40 × 20 mm box with no hole and an expected 32,000 mm³ volume. Width is X, box depth is Y, height and the through-hole axis are Z, and hole offsets are X/Y from the center. STL has no unit label: import it as millimetres and check the dimensions. STEP is intended for CAD exchange; verify dimensions and units in the receiving program. These instructions do not establish manufacturing suitability.
 
 The preview reports the measurements of the model actually visible. If dimensions change, a new build fails, or a build is cancelled, it labels the visible model as the earlier preview and retains its volume and surface area; build again to see current dimensions. A preview display failure explicitly marks the view uncertain. Local desktop and emulated-phone account tests check retained measurements after invalid input, save, sync and reopening.
+
+If a destination or file operation changes while a project or export folder
+chooser is open, the old folder choice is rejected and the current destination
+is kept. Choose a folder again before saving. Local desktop and phone-sized
+registered-account tests cover changed project names and export format, actual
+preview and STEP creation, project sync and fresh-browser reopening. Physical
+touch and manufacturing validation remain unverified.
