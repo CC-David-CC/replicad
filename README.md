@@ -40,3 +40,8 @@ changed. A conflict or other temporary read failure keeps the reference. Local
 desktop and emulated-phone tests exercise recovery, the real browser CAD
 preview, account synchronization and reopening. Physical touch and fabrication
 remain unverified.
+
+Projects containing unrecognized fields are rejected rather than opened and
+silently rewritten without them. Keep the original file; this version cannot
+edit extensions to the primitive-model format. Legacy projects with the
+previously optional hole fields still open normally.
