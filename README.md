@@ -18,7 +18,7 @@ A persistent notice reports when My files synchronization detects that the saved
 
 Opening another project and replacing project or model files use desktop confirmations. Cancelling preserves the current work; a parameter or target file changed while confirmation is open prevents the operation. Geometry is generated locally and must be independently checked before fabrication.
 
-The local candidate asks before closing while a project save or model export is
+The app asks before closing while a project save or model export is
 in progress, even when the parameters were clean before the operation began.
 Cancelling or failing restores the previous unsaved state unless parameters
 changed in the meantime. An already-dispatched file write may still complete
