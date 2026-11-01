@@ -58,3 +58,14 @@ is kept. Choose a folder again before saving. Local desktop and phone-sized
 registered-account tests cover changed project names and export format, actual
 preview and STEP creation, project sync and fresh-browser reopening. Physical
 touch and manufacturing validation remain unverified.
+
+Opening or saving a project suggests a model filename in the same folder with
+the same name, such as `/Lab/Sensor.stl` for `/Lab/Sensor.replicad.json`.
+Changing to STEP changes the extension. If you edit the export filename or use
+its folder chooser, that destination remains yours for the current window;
+changing projects does not replace it. A fresh window suggests the opened
+project's name again. Existing files still require version-checked replacement.
+Local registered-account desktop and emulated-phone tests opened an account
+project, built a preview, measured an actual exported 51 mm STL, checked server
+sync, saved a copy while retaining a custom model path, closed and reopened the
+original. Physical touch and manufactured geometry remain unverified.
