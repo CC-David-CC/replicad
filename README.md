@@ -11,3 +11,5 @@ Source entry: `index.mjs`; viewer: `preview.mjs`; worker: `workers/engine.mjs`; 
 Local desktop, emulated-phone and 4K and live emulated-phone account tests compare area and volume with analytical values and verify offset hole vertices in exported box and cylinder STL files, boundary rejection, preview, project sync and fresh-session reopening. STL is a triangulated approximation; independently check any model before fabrication.
 
 A persistent notice reports when My files synchronization detects that the saved project changed, became unavailable, or has conflicting copies. Your current parameters remain open; save a copy or resolve conflicts in Files. Project and model writes also identify immediate conflicts.
+
+Opening another project and replacing project or model files use desktop confirmations. Cancelling preserves the current work; a parameter or target file changed while confirmation is open prevents the operation. Geometry is generated locally and must be independently checked before fabrication.
