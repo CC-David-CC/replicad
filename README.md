@@ -47,3 +47,5 @@ edit extensions to the primitive-model format. Legacy projects with the
 previously optional hole fields still open normally.
 
 If a restored project is temporarily unavailable or conflicted, **Retry saved project** reopens it once storage is available. Unsaved parameter changes require confirmation before retry; cancelling keeps them. Opening or saving another project clears the retry target. Local registered-account desktop and emulated-phone tests cover an injected read failure, cancellation and confirmation, server sync, and recovery of unchanged original parameters. Physical touch and manufactured geometry were not tested.
+
+The in-app **Try a first model** guide uses a 40 × 40 × 20 mm box with no hole and an expected 32,000 mm³ volume. Width is X, box depth is Y, height and the through-hole axis are Z, and hole offsets are X/Y from the center. STL has no unit label: import it as millimetres and check the dimensions. STEP is intended for CAD exchange; verify dimensions and units in the receiving program. These instructions do not establish manufacturing suitability.
