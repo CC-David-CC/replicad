@@ -4,6 +4,10 @@ This app creates box and cylinder solids in a browser worker with Replicad. Ente
 
 This is a primitive generator with at most one vertical through-hole, not a full CAD editor: there is no CAD source editor, assemblies, or validation for manufacturing. The project format is specific to this app. The preview requires browser WebGL and is an inspection aid, not a manufacturing check. Independently verify exported geometry before manufacturing.
 
+**Cancel preview** stops the current preview calculation without closing the
+window. If an earlier preview exists, it remains visible; rebuild to see any
+new dimensions. Cancelling a preview is separate from cancelling a model export.
+
 The app uses the shared account file service; temporary guest Linux files are separate. Browser storage syncs with the account server when available. It checks file versions and asks before replacing other files. Each window owns its worker and file subscription; closing or cancelling stops its worker. Existing unsaved parameter changes prompt before opening another project or closing the window. Project saves and model exports capture their destination and dimensions when started; edits made afterward remain in the window and are identified as newer than the saved snapshot.
 
 Source entry: `index.mjs`; viewer: `preview.mjs`; worker: `workers/engine.mjs`; dependencies and build settings: `package.json`. Build with the shared public app builder, which bundles dependencies privately. See `docs/APP_UNIFICATION_PROGRESS.md` for current validation and remaining work.
