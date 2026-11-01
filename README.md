@@ -23,3 +23,8 @@ in progress, even when the parameters were clean before the operation began.
 Cancelling or failing restores the previous unsaved state unless parameters
 changed in the meantime. An already-dispatched file write may still complete
 after the window closes.
+
+Depth applies only to boxes and is disabled for cylinders. Switching shapes
+preserves any entered box depth; if a cylinder is saved while that field is
+empty or invalid, the compatible project uses the cylinder diameter for its
+unused depth value.
