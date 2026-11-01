@@ -69,3 +69,13 @@ Local registered-account desktop and emulated-phone tests opened an account
 project, built a preview, measured an actual exported 51 mm STL, checked server
 sync, saved a copy while retaining a custom model path, closed and reopened the
 original. Physical touch and manufactured geometry remain unverified.
+
+The visible preview also reports its measured X × Y × Z bounding extents in
+millimetres from the geometry kernel. These are approximate, rounded model
+bounds, including its outer envelope rather than any hole diameter or wall
+thickness. If a build fails or dimensions change, the extents continue to
+describe the earlier visible model. Local registered-account desktop and
+emulated-phone tests compare a holed box with actual exported STL vertices,
+save and sync the project, reopen it in a fresh session and inspect a cylinder.
+STL has no units; verify units, geometry and clearances independently before
+fabrication. Physical devices and manufactured parts were not tested.
