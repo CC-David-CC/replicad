@@ -28,3 +28,8 @@ Depth applies only to boxes and is disabled for cylinders. Switching shapes
 preserves any entered box depth; if a cylinder is saved while that field is
 empty or invalid, the compatible project uses the cylinder diameter for its
 unused depth value.
+
+The desktop restore reference follows the project most recently opened or
+saved. Unsaved parameter edits are not a recovery snapshot; save the project
+before refreshing. Local desktop and emulated-phone account tests cover
+switching projects, generating a preview, saving and reopening after refresh.
