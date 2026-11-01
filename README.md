@@ -45,3 +45,5 @@ Projects containing unrecognized fields are rejected rather than opened and
 silently rewritten without them. Keep the original file; this version cannot
 edit extensions to the primitive-model format. Legacy projects with the
 previously optional hole fields still open normally.
+
+If a restored project is temporarily unavailable or conflicted, **Retry saved project** reopens it once storage is available. Unsaved parameter changes require confirmation before retry; cancelling keeps them. Opening or saving another project clears the retry target. Local registered-account desktop and emulated-phone tests cover an injected read failure, cancellation and confirmation, server sync, and recovery of unchanged original parameters. Physical touch and manufactured geometry were not tested.
