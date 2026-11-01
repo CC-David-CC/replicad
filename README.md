@@ -33,3 +33,10 @@ The desktop restore reference follows the project most recently opened or
 saved. Unsaved parameter edits are not a recovery snapshot; save the project
 before refreshing. Local desktop and emulated-phone account tests cover
 switching projects, generating a preview, saving and reopening after refresh.
+
+When a restored project is missing or invalid, its stale desktop reference is
+cleared so it will not fail again on each refresh; the original file is not
+changed. A conflict or other temporary read failure keeps the reference. Local
+desktop and emulated-phone tests exercise recovery, the real browser CAD
+preview, account synchronization and reopening. Physical touch and fabrication
+remain unverified.
