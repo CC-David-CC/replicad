@@ -14,4 +14,5 @@ assert.equal(normalizeModel({...base,holeDiameter:10,holeX:20,holeY:-10}).holeX,
 for(const delta of [{holeX:25},{holeY:15},{holeX:NaN},{holeY:'1'}])assert.throws(()=>normalizeModel({...base,holeDiameter:10,...delta}));
 assert.equal(normalizeModel({...base,shape:'cylinder',holeDiameter:10,holeX:15,holeY:0}).holeX,15);
 assert.throws(()=>normalizeModel({...base,shape:'cylinder',holeDiameter:10,holeX:20,holeY:15}));
+assert.throws(()=>normalizeModel({...base,material:'aluminum'}),/unsupported fields/);
 console.log('PASS model validation, offsets and legacy projects');
