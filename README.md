@@ -79,3 +79,13 @@ emulated-phone tests compare a holed box with actual exported STL vertices,
 save and sync the project, reopen it in a fresh session and inspect a cylinder.
 STL has no units; verify units, geometry and clearances independently before
 fabrication. Physical devices and manufactured parts were not tested.
+
+## Browser commands
+
+The signed-in desktop's in-page command registry provides `inspect` and
+`set-parameters` for the open primitive model. An edit supplies the complete
+model and the current inspected revision; invalid dimensions or holes and stale
+revisions are rejected. The command updates the normal parameters and dirty
+state. Use Build preview and Save project in the app; changing parameters does
+not automatically build geometry. A preview is not a manufacturing check.
+These commands do not provide remote agent access.
