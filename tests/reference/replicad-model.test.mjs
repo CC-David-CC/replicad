@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {normalizeModel, PROJECT} from '../apps/system/replicad/model.mjs';
+const base={format:PROJECT,shape:'box',width:60,depth:40,height:20};
+assert.equal(normalizeModel(base).holeDiameter,0,'older saved models remain compatible');
+assert.equal(normalizeModel({...base,holeDiameter:10}).holeDiameter,10);
+for(const value of [-1,40,41,NaN,null,'10',Infinity])assert.throws(()=>normalizeModel({...base,holeDiameter:value}));
+assert.equal(normalizeModel({...base,shape:'cylinder',holeDiameter:50}).holeDiameter,50);
+assert.throws(()=>normalizeModel({...base,shape:'cylinder',holeDiameter:60}));
+for(const value of [0,-1,NaN,null,'40',Infinity,10001])assert.throws(()=>normalizeModel({...base,width:value}));
+assert.throws(()=>normalizeModel({...base,format:'other'}));
+assert.equal(normalizeModel(base).holeX,0,'legacy project has centered hole X');
+assert.equal(normalizeModel(base).holeY,0,'legacy project has centered hole Y');
+assert.equal(normalizeModel({...base,holeDiameter:10,holeX:20,holeY:-10}).holeX,20);
+for(const delta of [{holeX:25},{holeY:15},{holeX:NaN},{holeY:'1'}])assert.throws(()=>normalizeModel({...base,holeDiameter:10,...delta}));
+assert.equal(normalizeModel({...base,shape:'cylinder',holeDiameter:10,holeX:15,holeY:0}).holeX,15);
+assert.throws(()=>normalizeModel({...base,shape:'cylinder',holeDiameter:10,holeX:20,holeY:15}));
+assert.throws(()=>normalizeModel({...base,material:'aluminum'}),/unsupported fields/);
+console.log('PASS model validation, offsets and legacy projects');
