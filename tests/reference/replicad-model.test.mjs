@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {normalizeModel, PROJECT} from '../apps/system/replicad/model.mjs';
+import {normalizeModel, PROJECT} from "../../model.mjs";
 const base={format:PROJECT,shape:'box',width:60,depth:40,height:20};
 assert.equal(normalizeModel(base).holeDiameter,0,'older saved models remain compatible');
 assert.equal(normalizeModel({...base,holeDiameter:10}).holeDiameter,10);
