@@ -43,7 +43,7 @@ uses a Galaxy S10+ in portrait at 411 CSS pixels with Chrome
 | Cancel an active export worker | | Queued |
 | Recover a project after a concurrent Files edit | | Queued |
 
-Portrait covered 9 of 15 documented workflows. Desktop covered 12 of 15.
+Portrait covered 8 of 15 documented workflows. Desktop covered 12 of 15.
 The 820 × 1050 Chromium touch-tablet layout passed the core file cycle and
 kept the app bar available. The dark status text measured 13.32:1 on all
 three layouts. Physical landscape is queued for the separate orientation pass.
