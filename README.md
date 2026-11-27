@@ -61,7 +61,11 @@ touch and manufacturing validation remain unverified.
 
 Opening or saving a project suggests a model filename in the same folder with
 the same name, such as `/Lab/Sensor.stl` for `/Lab/Sensor.replicad.json`.
-Changing to STEP changes the extension. If you edit the export filename or use
+A plain filename saves at the root of My files. Use a path beginning with
+`/` to name a folder. Saving adds `.replicad.json` to a project name without
+an extension. Exporting adds `.stl` or `.step` according to the selected
+format. If you supplied an extension, it must match the selected format.
+Changing the format updates an existing STL or STEP extension. If you edit the export filename or use
 its folder chooser, that destination remains yours for the current window;
 changing projects does not replace it. A fresh window suggests the opened
 project's name again. Existing files still require version-checked replacement.
